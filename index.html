@@ -1,0 +1,72 @@
+<html>
+  <header>
+    <title>Login - Mapa de Representantes</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-dialog.min.css" />
+
+    <style>
+      body{
+        background-color: #E0E0E0;
+      }
+
+      .caixaLogin{
+        width: 550px;
+        height: 550px;
+        margin-left: -275px; /* metade da largura */
+        margin-top: -275px; /* metade da altura */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        /*background: url("back-blur.jpg") fixed;*/
+      }
+
+      .caixaLoginConteudo{
+        width: 550px;
+        height: 350px;
+        margin-left: -275px; /* metade da largura */
+        margin-top: -175px; /* metade da altura */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+    </style>
+
+  </header>
+
+  <body ng-app="reprApp" ng-controller="loginController" ng-init="verificaLogin();">
+    <form name='form1' method='post' ng-submit="validaLogin(usuario);">
+      <div class="caixaLogin">
+        <div class="caixaLoginConteudo container">
+          <br>  
+          <center>
+            <img src="img/logo.png" style="width: 200px; height: 100px;">
+          </center>
+            
+          <fieldset>
+            <label>Login</label>
+            <input class="form-control" ng-model="usuario.LOGIN" value="{{usuario.LOGIN}}" type="text" required placeholder='Login' name="login" id="login"/>
+              
+            <label>Senha</label>
+            <input class="form-control" ng-model="usuario.SENHA" value="usuario.SENHA" type="password" required placeholder='Senha' name="senha" id="senha"/>
+            <br>
+            <input type="submit" class="btn btn-success btn-lg btn-block" value="Entrar" />
+          </fieldset>
+        </div>
+      </div>
+    </form>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-dialog.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="controller/app.js"></script>
+
+  </body>
+<html>

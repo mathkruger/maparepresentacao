@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Mapa de Representantes</title>
+
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-dialog.min.css" />
+		<style type="text/css">
+			table{
+				text-align: center;
+			}
+
+			table th,td{
+				text-align: center;
+			}
+
+			.active { display:inherit; }
+			ul#map {display: block; margin: 0; padding: 0; width: 570px; height: 585px; background-image: url('img/map.gif');}
+			ul#map li {display: block; padding: 0; position: absolute;}
+			li#crs {margin-top: 485px; margin-left: 237px; }
+			li#csc {margin-top: 467px; margin-left: 292px;}
+			li#cpr {margin-top: 416px; margin-left: 281px;}
+			li#csp {margin-top: 375px; margin-left: 303px; z-index:9999; }
+			li#cms {margin-top: 336px; margin-left: 229px;}
+			li#crj {margin-top: 390px; margin-left: 422px; z-index:9999; }
+			li#ces {margin-top: 347px; margin-left: 467px; z-index:9999; }
+			li#cmg {margin-top: 292px; margin-left: 333px; z-index:9998; }
+			li#cgo {margin-top: 264px; margin-left: 301px; z-index:9999; }
+			li#cdf {margin-top: 311px; margin-left: 373px; z-index:9999; }
+			li#cba {margin-top: 207px; margin-left: 397px;}
+			li#cmt {margin-top: 189px; margin-left: 180px;}
+			li#cro {margin-top: 199px; margin-left: 104px; z-index:9998; }
+			li#cac {margin-top: 185px; margin-left: 0px;}
+			li#cam {margin-top: 46px; margin-left: 3px;}
+			li#crr {margin-top: 0; margin-left: 133px;}
+			li#cpa {margin-top: 40px; margin-left: 219px;}
+			li#cap {margin-top: 13px; margin-left: 278px;}
+			li#cma {margin-top: 94px; margin-left: 366px; z-index:9999;}
+			li#cto {margin-top: 156px; margin-left: 338px;}
+
+			li#cse {margin-top: 221px; margin-left: 519px; z-index:9998;}
+			li#cal {margin-top: 211px; margin-left: 518px; z-index:9999;}
+			li#cpe {margin-top: 188px; margin-left: 473px;}
+			li#cpb {margin-top: 169px; margin-left: 511px; z-index:9999;}
+			li#crn {margin-top: 151px; margin-left: 514px;}
+			li#cce {margin-top: 121px; margin-left: 473px;}
+			li#cpi {margin-top: 120px; margin-left: 406px; z-index:9997;}
+
+			ul#map li a {display: block; text-decoration: none; position: absolute;}
+			a#rs {width: 116px; height: 101px; }
+			a#sc {width: 81px; height: 53px; }
+			a#pr {width: 97px; height: 64px; }
+			a#sp {width: 131px; height: 84px; }
+			a#ms {width: 106px; height: 104px; }
+			a#rj {width: 58px; height: 40px; }
+			a#es {width: 33px; height: 51px; }
+			a#mg {width: 163px; height: 131px; }
+			a#go {width: 108px; height: 108px; }
+			a#df {width: 16px; height: 9px; }
+			a#ba {width: 136px; height: 148px; }
+			a#mt {width: 166px; height: 161px; }
+			a#ro {width: 104px; height: 87px; }
+			a#ac {width: 108px; height: 62px; }
+			a#am {width: 258px; height: 181px;}
+			a#rr {width: 87px; height: 103px; }
+			a#pa {width: 188px; height: 187px; }
+			a#ap {width: 73px; height: 85px; }
+			a#ma {width: 102px; height: 139px; }
+			a#to {width: 74px; height: 125px; }
+			a#se {width: 28px; height: 32px; }
+			a#al {width: 46px; height: 27px; }
+			a#pe {width: 97px; height: 34px; }
+			a#pb {width: 59px; height: 35px; }
+			a#rn {width: 53px; height: 33px; }
+			a#ce {width: 61px; height: 76px; }
+			a#pi {width: 83px; height: 124px; }
+
+			/* Código pronto via http://css.spritegen.com (com alterações nos seletores) */
+
+			a#pa:hover, a#pa:active, a#am:hover, a#am:active, a#mt:hover, a#mt:active, a#ba:hover, a#ba:active, a#ma:hover, a#ma:active,
+			a#mg:hover, a#mg:active, a#to:hover, a#to:active, a#pi:hover, a#pi:active, a#go:hover, a#go:active, a#ms:hover, a#ms:active,
+			a#rr:hover, a#rr:active, a#rs:hover, a#rs:active, a#ro:hover, a#ro:active, a#ap:hover, a#ap:active, a#sp:hover, a#sp:active,
+			a#ce:hover, a#ce:active, a#pr:hover, a#pr:active, a#ac:hover, a#ac:active, a#sc:hover, a#sc:active, a#es:hover, a#es:active,
+			a#rj:hover, a#rj:active, a#pb:hover, a#pb:active, a#pe:hover, a#pe:active, a#rn:hover, a#rn:active, a#se:hover, a#se:active,
+			a#al:hover, a#al:active, a#df:hover, a#df:active
+			{ display: block; background: url('img/sprite.gif') no-repeat; }
+
+			a#pa:hover, a#pa:active { background-position: -10px -0px; width: 188px; height: 187px; }
+			a#am:hover, a#am:active { background-position: -10px -197px; width: 258px; height: 181px; }
+			a#mt:hover, a#mt:active { background-position: -10px -388px; width: 166px; height: 161px; }
+			a#ba:hover, a#ba:active { background-position: -10px -559px; width: 136px; height: 148px; }
+			a#ma:hover, a#ma:active { background-position: -156px -559px; width: 102px; height: 139px; }
+			a#mg:hover, a#mg:active { background-position: -10px -717px; width: 163px; height: 131px; }
+			a#to:hover, a#to:active { background-position: -183px -717px; width: 74px; height: 125px; }
+			a#pi:hover, a#pi:active { background-position: -10px -858px; width: 83px; height: 124px; }
+			a#go:hover, a#go:active { background-position: -103px -858px; width: 108px; height: 108px; }
+			a#ms:hover, a#ms:active { background-position: -103px -976px; width: 106px; height: 104px; }
+			a#rr:hover, a#rr:active { background-position: -10px -992px; width: 87px; height: 103px; }
+			a#rs:hover, a#rs:active { background-position: -107px -1090px; width: 116px; height: 101px; }
+			a#ro:hover, a#ro:active { background-position: -10px -1201px; width: 104px; height: 87px; }
+			a#ap:hover, a#ap:active { background-position: -10px -1105px; width: 73px; height: 85px; }
+			a#sp:hover, a#sp:active { background-position: -124px -1201px; width: 131px; height: 84px; }
+			a#ce:hover, a#ce:active { background-position: -186px -388px; width: 61px; height: 76px; }
+			a#pr:hover, a#pr:active { background-position: -124px -1295px; width: 97px; height: 64px; }
+			a#ac:hover, a#ac:active { background-position: -10px -1298px; width: 108px; height: 62px; }
+			a#sc:hover, a#sc:active { background-position: -128px -1369px; width: 81px; height: 53px; }
+			a#es:hover, a#es:active { background-position: -208px -0px; width: 33px; height: 51px; }
+			a#rj:hover, a#rj:active { background-position: -186px -474px; width: 58px; height: 40px; }
+			a#pb:hover, a#pb:active { background-position: -10px -1370px; width: 59px; height: 35px; }
+			a#pe:hover, a#pe:active { background-position: -10px -1415px; width: 97px; height: 34px; }
+			a#rn:hover, a#rn:active { background-position: -186px -524px; width: 53px; height: 33px; }
+			a#se:hover, a#se:active { background-position: -208px -61px; width: 28px; height: 32px; }
+			a#al:hover, a#al:active { background-position: -208px -103px; width: 46px; height: 27px; }
+			a#df:hover, a#df:active { background-position: -208px -140px; width: 16px; height: 9px; }
+
+			/* Fim sprite */
+
+			ul#map li a img {border: 0; width: inherit; height: inherit;}
+		</style>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+	</head>
+
+	<body ng-app="reprApp" ng-controller="reprController" ng-init="verificaLogin();">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="well">
+					<img src="img/logo.png" style="width: 100px; height: 50px"> <span><strong>Mapa de representantes</strong></span>
+					<button class="btn btn-danger btn-sm" ng-click="removerLogin();" style="float: right;">
+						Sair
+					</button>
+				</div>
+
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+		                <div class="panel panel-heading">
+		                    <h4><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Mapa</h4>
+
+		                </div>
+		                
+		                <div class="panel-body">
+		                	
+
+		                    <ul id="map">
+								<li id="crs" estado="rs"><a href="" id="rs" title="RS" ng-click="carregaRepresentantes('RS')"><img src="img/null.gif" alt="RS" /></a></li>
+								<li id="csc" estado="sc"><a href="" id="sc" title="SC" ng-click="carregaRepresentantes('SC')"><img src="img/null.gif" alt="SC" /></a></li>
+								<li id="cpr" estado="pr"><a href="" id="pr" title="PR" ng-click="carregaRepresentantes('PR')"><img src="img/null.gif" alt="PR" /></a></li>
+								<li id="csp" estado="sp"><a href="" id="sp" title="SP" ng-click="carregaRepresentantes('SP')"><img src="img/null.gif" alt="SP" /></a></li>
+								<li id="cms" estado="ms"><a href="" id="ms" title="MS" ng-click="carregaRepresentantes('MS')"><img src="img/null.gif" alt="MS" /></a></li>
+								<li id="crj" estado="rj"><a href="" id="rj" title="RJ" ng-click="carregaRepresentantes('RJ')"><img src="img/null.gif" alt="RJ" /></a></li>
+								<li id="ces" estado="es"><a href="" id="es" title="ES" ng-click="carregaRepresentantes('ES')"><img src="img/null.gif" alt="ES" /></a></li>
+								<li id="cmg" estado="mg"><a href="" id="mg" title="MG" ng-click="carregaRepresentantes('MG')"><img src="img/null.gif" alt="MG" /></a></li>
+								<li id="cgo" estado="go"><a href="" id="go" title="GO" ng-click="carregaRepresentantes('GO')"><img src="img/null.gif" alt="GO" /></a></li>
+								<li id="cdf" estado="df"><a href="" id="df" title="DF" ng-click="carregaRepresentantes('DF')"><img src="img/null.gif" alt="DF" /></a></li>
+								<li id="cba" estado="ba"><a href="" id="ba" title="BA" ng-click="carregaRepresentantes('BA')"><img src="img/null.gif" alt="BA" /></a></li>
+								<li id="cmt" estado="mt"><a href="" id="mt" title="MT" ng-click="carregaRepresentantes('MT')"><img src="img/null.gif" alt="MT" /></a></li>
+								<li id="cro" estado="ro"><a href="" id="ro" title="RO" ng-click="carregaRepresentantes('RO')"><img src="img/null.gif" alt="RO" /></a></li>
+								<li id="cac" estado="ac"><a href="" id="ac" title="AC" ng-click="carregaRepresentantes('AC')"><img src="img/null.gif" alt="AC" /></a></li>
+								<li id="cam" estado="am"><a href="" id="am" title="AM" ng-click="carregaRepresentantes('AM')"><img src="img/null.gif" alt="AM" /></a></li>
+								<li id="crr" estado="rr"><a href="" id="rr" title="RR" ng-click="carregaRepresentantes('RR')"><img src="img/null.gif" alt="RR" /></a></li>
+								<li id="cpa" estado="pa"><a href="" id="pa" title="PA" ng-click="carregaRepresentantes('PA')"><img src="img/null.gif" alt="PA" /></a></li>
+								<li id="cap" estado="ap"><a href="" id="ap" title="AP" ng-click="carregaRepresentantes('AP')"><img src="img/null.gif" alt="AP" /></a></li>
+								<li id="cma" estado="ma"><a href="" id="ma" title="MA" ng-click="carregaRepresentantes('MA')"><img src="img/null.gif" alt="MA" /></a></li>
+								<li id="cto" estado="to"><a href="" id="to" title="TO" ng-click="carregaRepresentantes('TO')"><img src="img/null.gif" alt="TO" /></a></li>
+								<li id="cse" estado="se"><a href="" id="se" title="SE" ng-click="carregaRepresentantes('SE')"><img src="img/null.gif" alt="SE" /></a></li>
+								<li id="cal" estado="al"><a href="" id="al" title="AL" ng-click="carregaRepresentantes('AL')"><img src="img/null.gif" alt="AL" /></a></li>
+								<li id="cpe" estado="pe"><a href="" id="pe" title="PE" ng-click="carregaRepresentantes('PE')"><img src="img/null.gif" alt="PE" /></a></li>
+								<li id="cpb" estado="pb"><a href="" id="pb" title="PB" ng-click="carregaRepresentantes('PB')"><img src="img/null.gif" alt="PB" /></a></li>
+								<li id="crn" estado="rn"><a href="" id="rn" title="RN" ng-click="carregaRepresentantes('RN')"><img src="img/null.gif" alt="RN" /></a></li>
+								<li id="cce" estado="ce"><a href="" id="ce" title="CE" ng-click="carregaRepresentantes('CE')"><img src="img/null.gif" alt="CE" /></a></li>
+								<li id="cpi" estado="pi"><a href="" id="pi" title="PI" ng-click="carregaRepresentantes('PI')"><img src="img/null.gif" alt="PI" /></a></li>
+							</ul>
+
+							<!--<button class="btn btn-success btn-lg" ng-click="carregaEstados();">
+		                 		<i class="glyphicon glyphicon-plus"></i> Gerenciar Responsaveis
+		                 	</button>-->
+		                </div>
+		            </div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+		                <div class="panel panel-heading">
+		                    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Representantes</h4>
+
+		                </div>
+		                
+		                <div class="panel-body">
+		                 	<div id="cabecalho" class="well" ng-show='estado != null' ng-init="editandoResp = true">
+		                 		<h2>{{estado.SIGLA}} - {{estado.NOME}}</h2>
+	                            <div class="col-md-2">
+	                              	<label><strong>Responsável</strong></label>
+	                            </div>
+
+	                            <div class="col-md-4">
+	                                <input id="nomeResp" class="form-control" type="text" ng-model="estado.RESPONSAVEL" value="{{estado.RESPONSAVEL}}" ng-disabled="editandoResp">                                 
+	                            </div>
+		                 			
+		                 		<button type="button" class="btn btn-info" ng-click="editandoResp = false">
+	                                <i class="glyphicon glyphicon-edit"></i>
+	                            </button>
+
+	                            <button type="button" class="btn btn-success" ng-click="alteraResponsavel(estado);editandoResp = true" ng-show="editandoResp === false">
+	                                <i class="glyphicon glyphicon-floppy-save"></i> Salvar
+	                            </button>
+		                 	</div>
+
+		                 	<div id="tabela" class="table" ng-show='representantes.length > 0'>
+		                		<table class="table table-bordered">
+	                                <tr>
+	                                    <th>Nome</th>
+	                                    <th>Telefone</th>
+	                                    <th>E-mail</th>
+	                                    <th>Atuação</th>
+	                                    <th>Estado</th>
+	                                    <th colspan="2">Opções</th>
+	                                </tr>
+
+	                                <tr ng-repeat="r in representantes">
+	                                    <td>{{r.NOME}}</td>
+	                                    <td>{{r.TELEFONE}}</td>
+	                                    <td>{{r.EMAIL}}</td>
+	                                    <td>{{r.ATUACAO}}</td>
+	                                    <td>{{r.ESTADO}}</td>
+
+
+	                                    <td>
+	                                        <button type="button" class="btn btn-danger" ng-click="confirmaExclusaoRepresentante(r);">
+	                                            <i class="glyphicon glyphicon-trash"></i>
+	                                        </button>
+	                                    </td>
+
+	                                    <td>
+	                                        <button type="button" class="btn btn-info" ng-click="editarRepresentante(r);">
+	                                            <i class="glyphicon glyphicon-edit"></i>
+	                                        </button>
+	                                    </td>
+	                                </tr>
+	                            </table>
+		                 	</div>
+
+		                 	<div class="well text-warning" ng-show='representantes.length == 0 && estado != null'>
+		                 		<strong>Estado sem representantes!</strong>
+		                 	</div>
+
+		                 	<button class="btn btn-success btn-lg" ng-show='estado != null' ng-click="representante = {ESTADO: estado.SIGLA};">
+		                 		<i class="glyphicon glyphicon-plus"></i> Novo
+		                 	</button>
+
+		                 	<div id="form" ng-hide="representante == null">
+		                 		<form>
+		                 			<fieldset>
+		                 				<legend>Dados do Representante</legend>
+		                 			</fieldset>
+
+		                 			<input type="hidden" ng-model="representante.COD" value="{{representante.COD}}">
+
+		                 			<div class="form-group">
+		                 				<label>Nome</label>
+		                 				<input type="text" class="form-control" ng-model="representante.NOME" value="{{representante.NOME}}" placeholder="Nome do representante">
+		                 			</div>
+
+		                 			<div class="form-group">
+		                 				<label>Telefone</label>
+		                 				<input type="tel" class="form-control" ng-model="representante.TELEFONE" value="{{representante.TELEFONE}}">
+		                 			</div>
+
+		                 			<div class="form-group">
+		                 				<label>E-mail</label>
+		                 				<input type="text" class="form-control" ng-model="representante.EMAIL" value="{{representante.EMAIL}}">
+		                 			</div>
+
+		                 			<div class="form-group">
+		                 				<label>Atuação</label>
+		                 				<input type="text" class="form-control" ng-model="representante.ATUACAO" value="{{representante.ATUACAO}}">
+		                 			</div>
+
+		                 			<input type="hidden" class="form-control" ng-model="representante.ESTADO" value="{{estado.SIGLA}}">
+		                 		</form>
+		                 		<div class="well">
+		                 			<button class="btn btn-success" ng-click="salvaRepresentante(representante)">
+		                 				<i class="glyphicon glyphicon-floppy-save"></i> Salvar
+		                 			</button>	
+
+		                 			<button class="btn btn-danger" ng-click="representante = null;">
+		                 				<i class="glyphicon glyphicon-remove"></i> Fechar
+		                 			</button>	
+		                 		</div>
+		                 	</div>
+
+		                 	<div class="well text-info" ng-show='estado == null'>
+		                 		<strong>Por favor, selecione um estado!</strong>
+		                 	</div>
+		                </div>
+		            </div>
+				</div>
+
+				<!--<div class="col-md-12" ng-show='estados.length > 0'>
+					<div class="panel panel-primary">
+		                <div class="panel panel-heading">
+		                    <h4><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Gerenciador de Responsaveis</h4>
+		                </div>
+		                
+		                <div class="panel-body">
+		                    <div id="tabela" class="table">
+		                		<table class="table table-bordered">
+	                                <tr>
+	                                    <th>Sigla</th>
+	                                    <th>Nome</th>
+	                                    <th>Responsavel(eis)</th>
+	                                    <th>Editar</th>
+	                                </tr>
+
+	                                <tr ng-repeat="e in estados">
+	                                    <td>{{e.SIGLA}}</td>
+	                                    <td>{{e.NOME}}</td>
+	                                    <td>{{e.RESPONSAVEL}}</td>
+
+	                                    <td>
+	                                        <button type="button" class="btn btn-info" ng-click="">
+	                                            <i class="glyphicon glyphicon-edit"></i>
+	                                        </button>
+	                                    </td>
+	                                </tr>
+	                            </table>
+		                 	</div>
+
+		                 	<
+		                </div>
+		            </div>
+				</div> -->
+
+			</div> <!-- FIM row -->
+		</div> <!-- FIM container -->
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-dialog.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="controller/app.js"></script>
+	</body>
+</html>
